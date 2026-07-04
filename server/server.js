@@ -14,6 +14,11 @@ const { notFound, errorHandler } = require("./middleware/errorHandler");
 const app = express();
 const server = http.createServer(app);
 
+// Render (and most PaaS hosts) sit behind a reverse proxy — this tells Express
+// to trust the X-Forwarded-For header so express-rate-limit can correctly
+// identify client IPs instead of throwing ERR_ERL_UNEXPECTED_X_FORWARDED_FOR.
+app.set("trust proxy", 1);
+
 // ---------- Socket.io (live order/stock updates) ----------
 const io = new Server(server, {
   cors: { origin: process.env.CLIENT_URL || "*", methods: ["GET", "POST"] },
