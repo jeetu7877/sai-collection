@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-base-950 text-gray-100 font-body antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255,107,0,0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255,107,0,0.06), transparent);
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #111114; }
+::-webkit-scrollbar-thumb { background: #33333c; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #ff6b00; }
+
+:focus-visible {
+  outline: 2px solid #ff6b00;
+  outline-offset: 2px;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-md border border-white/10 shadow-glass;
+  }
+  .glass-hover {
+    @apply hover:bg-white/[0.07] hover:border-accent/40 transition-all duration-300;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-heading font-semibold text-white shadow-glow transition-all duration-300 hover:bg-accent-light hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:border-accent hover:text-accent;
+  }
+  .input-field {
+    @apply w-full rounded-xl bg-base-900 border border-white/10 px-4 py-3 text-sm text-gray-100 placeholder:text-gray-500 focus:border-accent focus:ring-1 focus:ring-accent transition-colors outline-none;
+  }
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.2em] text-accent font-heading font-semibold;
+  }
+  .section-title {
+    @apply font-heading text-3xl md:text-4xl font-bold text-white;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #ff6b00, #ffb347);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
